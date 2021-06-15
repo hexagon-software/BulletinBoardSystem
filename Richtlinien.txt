@@ -1,0 +1,21 @@
+Ordner:
+1. Server Files
+Name: "server_files"
+Ort: "working-directory (Server)"
+Inhalte: "Nur dateien auf die der Server Zugreift"
+
+2. Client Files
+Name: "usr_content"
+Ort: "Beliebig, kann in config angegeben werden"
+Inhalte: "Dateien die der Client benötigt (z.B. Einstellungen)"
+
+3. Client Files
+Name: "client_files"
+Ort: "working-directory (Client)"
+Inhalte: "Dateien die vom server geladen wurden und Temporäre dateien"
+
+Kommunikation:
+Nachrichten die mit "!" Anfangen, sind als befehl an den client zu verstehen.
+Nachrichten die mit "?" Anfangen, sind Text-Eingabe anforderungen
+Nachrichten Server die mit "&" Anfangen, sind als Daten Anfrage zu verstehen
+Nachrichten Server die mit "<MSG>" Anfangen, sind als Nachricht zu verstehen
