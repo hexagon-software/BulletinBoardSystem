@@ -2,11 +2,14 @@ package de.hexagonsoftware.cbec;
 
 import java.net.*;
 import java.io.*;
+import java.util.Scanner;
 
 public class Main {
     private Socket clientSocket;
     private static PrintWriter out;
     private static BufferedReader in;
+
+    private Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) throws IOException {
          Main main = new Main();
@@ -14,7 +17,7 @@ public class Main {
          while (true){
              char[] buffer = new char[200];
              int anzahlZeichen = in.read(buffer, 0, 200);
-             System.out.println(new String(buffer, 0, anzahlZeichen));
+             main.processMessage(new String(buffer, 0, anzahlZeichen));
          }
     }
 
@@ -34,5 +37,16 @@ public class Main {
         in.close();
         out.close();
         clientSocket.close();
+    }
+
+    public void processMessage(String msg) {
+        if (msg.startsWith("!")) {
+            System.out.println(msg.split("!")[1]+": ");
+            String in = sc.nextLine();
+            out.write(in);
+            out.flush();
+        } else if (msg.startsWith("<MSG>")) {
+            System.out.println(msg.split("<MSG>"));
+        }
     }
 }
